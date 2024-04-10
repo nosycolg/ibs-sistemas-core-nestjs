@@ -8,7 +8,7 @@ async function bootstrap() {
 
     const cors = {
         allowedOrigins: allowedOrigins,
-        methods: 'GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS', // Corrigido aqui
+        methods: 'GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS'
     };
 
     app.enableCors(cors);
