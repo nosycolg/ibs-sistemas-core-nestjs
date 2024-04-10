@@ -23,6 +23,9 @@ export class PeopleService {
         }
 
         const people = await this.prisma.people.findMany({
+            include: {
+                addresses: true,
+            },
             skip: offset,
             take: maxResults,
             where: whereClause,
@@ -59,16 +62,15 @@ export class PeopleService {
     }
 
     async updatePerson(param: { id: string }, body: People) {
+        const { name, gender, dateOfBirth, maritalStatus } = body;
         const person = this.prisma.people.findUnique({ where: { id: Number(param.id) } });
 
         if (!person) {
-            throw new NotFoundException('Person dont exist');
+            throw new NotFoundException('Person does not exist');
         }
 
-        const { name, gender, dateOfBirth, maritalStatus } = body;
-
         if (!name || !gender || !dateOfBirth || !maritalStatus) {
-            throw new NotFoundException('required fields!');
+            throw new NotFoundException('Required fields missing!');
         }
 
         const data = this.prisma.people.update({

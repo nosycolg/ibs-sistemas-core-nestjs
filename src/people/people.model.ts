@@ -5,5 +5,5 @@ export class People implements Prisma.PeopleCreateInput{
   gender: string;
   dateOfBirth: string;
   maritalStatus: string;
-  addresses?: Prisma.AddressCreateNestedManyWithoutPeopleInput;
+  addresses?: Prisma.AddressesCreateNestedManyWithoutPeopleInput;
 }

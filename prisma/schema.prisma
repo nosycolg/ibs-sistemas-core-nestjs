@@ -25,10 +25,10 @@ model People {
   gender        String    @db.VarChar(100)
   dateOfBirth   String    @db.VarChar(100)
   maritalStatus String    @db.VarChar(100)
-  addresses     Address[]
+  addresses     Addresses[]
 }
 
-model Address {
+model Addresses {
   id           Int     @id @default(autoincrement())
   cep          String  @db.VarChar(100)
   street       String  @db.VarChar(100)
